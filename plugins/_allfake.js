@@ -146,9 +146,10 @@ key: {
                        }
 	                  }
        
-        global.fake = pickRandom(global.fak)
         
         global.fak = [ fvn, fgif, ftroli, fgclink, fliveLoc, fliveLoc2, fdocs, ftoko, ftextt, fkontak ]
+        
+        global.fake = pickRandom(global.fak)
 		// Tambahin ya
 	}
 }
