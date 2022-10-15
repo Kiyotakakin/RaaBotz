@@ -25,7 +25,7 @@ let handler = async (m, { conn, usedPrefix, text, command, args }) => {
     let thumb = await (await fetch('https://telegra.ph/file/b9a32ee41970d7a71b476.jpg')).buffer()
     let tag = `@${m.sender.split('@')[0]}`
     conn.reply(m.chat, '*WAIT! | Mohon Tunggu Sebentar...*', m, {quoted: m, thumbnail: await (await fetch('https://telegra.ph/file/b9a32ee41970d7a71b476.jpg')).buffer(), contextInfo: { externalAdReply: {title: 'Lagi Memuat Data', sourceUrl: 'https://vt.tiktok.com/ZSdnasM19/', body: '© 𝙷𝚊𝚘𝚛𝚒𝚋𝚘𝚝𝚣 𝙱𝚢 𝚉𝚒𝚟𝚏𝚞𝚛𝚛', thumbnail: await (await fetch('https://telegra.ph/file/7d3c2136bec2eaec00f2e.jpg')).buffer(),}}})
-let txt = `Hai Kak ${tag}, Videonya Udah Jadi Nih ${title}, Kalau Mau Versi Ekstensi Lain, Pilih Dibawah Ya` 
+let txt = `Hai Kak ${tag}, Videonya Udah Jadi Nih ${data.username}, Kalau Mau Versi Ekstensi Lain, Pilih Dibawah Ya` 
     await conn.sendButtonVid(m.chat, video, txt, 'Mau Ganti Ke Versi Music Klik Dibawah', `Audio`, `.tiktokaudio ${args[0]}`, 0, { quoted: ftroli,
     contextInfo: { forwardingScore: 99999, isForwarded: true,
         externalAdReply: {
