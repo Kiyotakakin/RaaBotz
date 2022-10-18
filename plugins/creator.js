@@ -14,7 +14,7 @@ let handler = async(m, { conn }) => {
     surface : 404,
     message: `Nih My Mastah :3`, 
     orderTitle: ``,
-    thumbnail: await (await fetch('https://telegra.ph/file/7501d485189f34dc429a7.jpg')).buffer(), //Gambarnye
+    thumbnail: await (await fetch('https://telegra.ph/file/60737e8e0b6f31dbda295.jpg')).buffer(), //Gambarnye
     sellerJid: '0@s.whatsapp.net' 
     }
     }
