@@ -22,10 +22,10 @@ let handler = async (m, { conn, text, participants, usedPrefix, command }) => {
         console.log(jid)
         let __user = participants.find(v => v.id === jid)
         if (__user) {
-            conn.sendButton(m.chat, `_Berhasil menambahkan @${jid.split`@`[0]}_`, wm, 'menu', usedPrefix + 'menu', m)
+            conn.sendButton(m.chat, `_Berhasil menambahkannya Tuan_`, wm, 'menu', usedPrefix + 'menu', m)
         }
         if (!__user) {
-            conn.sendButton(m.chat, `_Gagal menambahkan @${jid.split`@`[0]}!_\nMungkin user tersebut baru keluar dari group ini jadi harus masuk melalui *${usedPrefix}link*`, wm, 'link', usedPrefix + 'link', m)
+            conn.sendButton(m.chat, `_Gagal menambahkannya Tuan!_\nMungkin user tersebut baru keluar dari group ini jadi harus masuk melalui *${usedPrefix}link*`, wm, 'link', usedPrefix + 'link', m)
             /*
             let pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => false)
             let jpegThumbnail = pp ? await (await fetch(pp)).buffer() : false
