@@ -260,7 +260,7 @@ let ftt = `*Note:* Jika menemukan bug, error atau kesulitan dalam penggunaan sil
                 }, {
                   "title": "「 👥 」› Group ",
                   "description": "Menampilkan fitur dari group",
-                  "rowId": ".? grup"
+                  "rowId": ".? group"
                 }, {
                   "title": "「 🌟 」› Premium ",
                   "description": "Menampilkan fitur dari premium",
