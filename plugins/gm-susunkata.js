@@ -22,7 +22,7 @@ Ketik *${usedPrefix}suka* untuk bantuan
 Poin: *${poin} XP*
     `.trim()
     conn.susunkata[id] = [
-    await conn.sendButtonLoc(m.chat, col, caption, wm, 'Bantuan', usedPrefix + 'suka', m),
+    await conn.sendButtonLoc(m.chat, await conn.resize(pickRandom(global.waifu), 300, 300), caption, wm, 'Bantuan', usedPrefix + 'suka', m),
     json,
     poin,
     setTimeout(() => {
