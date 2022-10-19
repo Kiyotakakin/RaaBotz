@@ -1,9 +1,7 @@
-const {neonime} = require('../../lib/anime')
+const {neonime} = require('../lib/anime')
 	let handler = async (m, {conn, text, args}){
 		async function anime(q, page){
 			const cari = await neonime.search(q, page)
-			if(!cari.status) return m.reply('Anime not found!')
-			if(cari.status == 404) return m.reply('Page not found!')
 			const list = [
 			{
 				title: `Next Page`,
