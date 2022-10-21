@@ -1,60 +1,50 @@
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-	let nimek = await neonimesearch(text)
-	let animek = (Object.entries(nimek).map(([title, episode, url])))
-	let row = Object.keys(animek).map(v => ({
-		title: title[v],
-		description: episode[v],
-		rowId: url[v]
-	}))
-	let button = {
-		buttonText: 'LIST STORE',
-		description: 'Berikut daftar Menu yg Ada di List store...',
-		footerText: wm
+let fetch = require('node-fetch')
+let handler = async (m, { text, usedPrefix, command }) => {
+    if (!text) throw `uhm.. cari apa?\n\ncontoh:\n${usedPrefix + command} mabar`
+    let res = await neonimek(text)
+	let listbutton = []
+	let no = 1
+	for (var z of res) {
+		let button = {
+			title: 'Result - ' + no++ + ' ',
+			rows: [{
+				title: z.title,
+				rowId: prefix + 'song ' + z.url
+			}]
+		};
+		listbutton.push(button)
 	}
-	conn.sendListM(m.chat, button, row, m)
+	const listMessage = {
+		text: `And ${listbutton.length} More Results...`,
+		title: res.title,
+		buttonText: 'Select song',
+		sections: listbutton
+	}
+	await conn.sendMessage(m.chat, listMessage, {		quoted: m
+	})
 }
-handler.help = ['list'].map(v => v + ' <pencarian>')
-handler.tags = ['admin']
-handler.command = /^list$/i
 
-module.exports = handler
+    handler.help = ['animek'].map(v => v + ' <pencarian>') 
+ handler.tags = ['cristian'] 
+ handler.command = /^(animek)$/i 
+  
+ module.exports = handler
 
 let axios = require('axios') 
-let cheerio = require('cheerio')
-async function neonimesearch(text) {
-		return new Promise(async(resolve) => {
-			try{
+let cheerio = require('cheerio') 
+async function neonimek(text) {
 				const {data} = await axios.get(`https://neonime.cloud/page/1/?s=${text}`)
 				const $ = cheerio.load(data)
-				const result = []
-				$('#contenedor').find('div.item_1.items > div').each(function(){
-					result.push({
-						title: $(this).find('a > div > span').text(),
-						episode: $(this).find('div.fixyear > h2').text(),
-						url: $(this).find('a').attr('href')
+				const results = []
+				$('#contenedor').find('div.item_1.items > div').each(function(index, element){
+						let title = $(this).find('a > div > span').text()
+						let episode = $(this).find('div.fixyear > h2').text()
+						let url= $(this).find('a').attr('href')
+						results.push({
+						  title,
+						  episode,
+						  url
 					})
 				})
-				const filter = result.filter(p => p.title && p.episode.includes('Episode'))
-				resolve(filter != '' ? {
-					status: true,
-					author,
-					query,
-					page,
-					result: filter
-				} : {
-					status: false,
-					author,
-					query,
-					page,
-					message: 'not found'
-				})
-			}catch(e){
-				resolve({
-					status: 404,
-					query,
-					page,
-					message: 'Page not found!'
-				})
-			}
-		})
-	}
+				return results
+}
