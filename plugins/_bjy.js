@@ -9,19 +9,18 @@ let handler = async (m, { text, usedPrefix, command }) => {
 			title: 'Result - ' + no++ + ' ',
 			rows: [{
 				title: z.title,
-				rowId: prefix + 'song ' + z.url
+				rowId: z.url
 			}]
 		};
 		listbutton.push(button)
 	}
 	const listMessage = {
-		text: `And ${listbutton.length} More Results...`,
+		text: `And More Results...`,
 		title: res.title,
 		buttonText: 'Select song',
 		sections: listbutton
 	}
-	await conn.sendMessage(m.chat, listMessage, {		quoted: m
-	})
+	await conn.sendMessage(m.chat, listMessage, {quoted: m})
 }
 
     handler.help = ['animek'].map(v => v + ' <pencarian>') 
