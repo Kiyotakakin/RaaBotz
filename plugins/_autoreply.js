@@ -29,21 +29,6 @@ let fs = require('fs')
  `, wm, 'Pemilik Bot', '.owner', m) 
      } 
   
-     if (m.isGroup) { 
-     if (m.fromMe) return 
-     if (m.mentionedJid.includes(this.user.jid) && m.isGroup) { 
-             conn.sendMessage(m.chat, { 
-             react: { 
-                     text: conn.pickRandom(['🤭', '😤', '😴']), 
-                     key: m.key 
-             } 
-     })         
-             await this.send2ButtonLoc(m.chat, 'https://telegra.ph/file/96a78933baa32ab4829ca.jpg', m.msg.contextInfo.expiration == 604800 ? '\n\nketik *.ephe* untuk matiin pesan sementaranya, biar tombolnya bisa dipake' : `Ada Apa Ya Tag-Tag Saia @${m.sender.split`@`[0]}?\nApakah Ada Bansos ?`, wm, isBanned ? 'Unban' : banned ? 'Pemilik Bot' : 'Menu', 
-                 isBanned ? '.unban' : banned ? '.owner' : '.?', 
-                 m.isGroup ? 'Ban' : isBanned ? 'Unban' : 'Donasi', 
-                 m.isGroup ? '.ban' : isBanned ? '.unban' : '.donasi', m) 
-     } 
- } 
       
      if (/^bot$/i.test(m.text)) { 
          await this.sendButton(m.chat, !(m.isGroup || m.isPrems) && group ? 'hanya grup' : isBanned ? 'chat banned' : banned ? 'user banned' : 'aktif', wm, !(m.isGroup || m.isPrems) && group ? 'donasi' : isBanned ? 'unban' : banned ? 'minta owner kalo mau di unban' : 'donasi', !(m.isGroup || m.isPrems) && group ? '.donasi' : isBanned ? '.unban' : banned ? '.owner' : '.donasi', m) 
