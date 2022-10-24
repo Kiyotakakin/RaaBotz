@@ -4,7 +4,7 @@ let handler = async (m, { conn }) => {
 //https://api.lolhuman.xyz/api/random/ppcouple?apikey=RFK-Rey
 m.reply(wait)
 
-let res = await fetch(`https://api.xteam.xyz/randomimage/ppcouple?APIKEY=NezukoTachibana281207`)
+let res = await fetch(global.API('lol', `/api/random/ppcouple?`, {}, 'apikey'))
 let json = await res.json()
 
 conn.sendFile(m.chat, json.result.male, 'ppcowo.png', 'Cowok', m, false,{ contextInfo: { forwardingScore: 999, isForwarded: true }})
